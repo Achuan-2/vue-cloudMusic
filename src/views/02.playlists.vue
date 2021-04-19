@@ -24,20 +24,9 @@
         <div class="tab-container">
             <!-- tab栏 顶部 -->
             <div class="tab-bar">
-                <span class="item" :class="{ active: tag == '全部' }" @click="tag = '全部'"> 全部 </span>
-                <span class="item" :class="{ active: tag == '欧美' }" @click="tag = '欧美'"> 欧美 </span>
-                <span class="item" :class="{ active: tag == '华语' }" @click="tag = '华语'"> 华语 </span>
-                <span class="item" :class="{ active: tag == '流行' }" @click="tag = '流行'"> 流行 </span>
-                <span class="item" :class="{ active: tag == '说唱' }" @click="tag = '说唱'"> 说唱 </span>
-                <span class="item" :class="{ active: tag == '摇滚' }" @click="tag = '摇滚'"> 摇滚 </span>
-                <span class="item" :class="{ active: tag == '民谣' }" @click="tag = '民谣'"> 民谣 </span>
-                <span class="item" :class="{ active: tag == '电子' }" @click="tag = '电子'"> 电子 </span>
-                <span class="item" :class="{ active: tag == '轻音乐' }" @click="tag = '轻音乐'"> 轻音乐 </span>
-                <span class="item" :class="{ active: tag == '影视原声' }" @click="tag = '影视原声'"> 影视原声 </span>
-                <span class="item" :class="{ active: tag == 'ACG' }" @click="tag = 'ACG'"> ACG </span>
-                <span class="item" :class="{ active: tag == '怀旧' }" @click="tag = '怀旧'"> 怀旧 </span>
-                <span class="item" :class="{ active: tag == '治愈' }" @click="tag = '治愈'"> 治愈 </span>
-                <span class="item" :class="{ active: tag == '旅行' }" @click="tag = '旅行'"> 旅行 </span>
+                <div v-for="(genre, index) in tags" :key="index">
+                    <span class="item" :class="{ active: tag == genre }" @click="tag = genre"> {{ genre }}</span>
+                </div>
             </div>
             <!-- tab的内容区域 -->
             <div class="tab-content">
