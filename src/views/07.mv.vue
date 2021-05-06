@@ -4,113 +4,73 @@
       <h3 class="title">mv详情</h3>
       <!-- mv -->
       <div class="video-wrap">
-        <video
-          controls
-          src="https://nie.v.netease.com/r/video/20180531/44f868de-deef-4409-8325-3bb3b5567f2c.mp4"
-        ></video>
+        <video controls :src="url"></video>
       </div>
       <!-- mv信息 -->
       <div class="info-wrap">
         <div class="singer-info">
           <div class="avatar-wrap">
-            <img src="../assets/avatar.jpg" alt="" />
+            <!-- 头像 -->
+            <img :src="icon" alt="" />
           </div>
-          <span class="name">TF Boys</span>
+          <!-- 歌手名 -->
+          <span class="name">{{ mvInfo.artistName }}</span>
         </div>
         <div class="mv-info">
-          <h2 class="title">TF BOYS LIVE 秀 王源《淘汰》</h2>
+          <!-- 标题 -->
+          <h2 class="title">{{ mvInfo.name }}</h2>
           <span class="date">发布：2014-11-04</span>
-          <span class="number">播放：94526次</span>
+          <!-- 播放次数 -->
+          <span class="number">播放：{{ mvInfo.playCount }}次</span>
+          <!-- 描述 -->
           <p class="desc">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Consequuntur saepe aut officia itaque exercitationem culpa facere
-            doloremque voluptates id non nam, aliquid ipsum laborum odit
-            accusantium dolorem eligendi veniam dolore ea aperiam labore
-            cupiditate et a. Necessitatibus eaque blanditiis possimus nobis
-            ullam reprehenderit animi, vero reiciendis eos, deleniti commodi,
-            consequatur dolorem iusto. Assumenda doloribus soluta temporibus ut
-            dolorum corporis quos! Quisquam consectetur dolore iste quo
-            praesentium dolorum excepturi, at sapiente pariatur quis! Neque ex
-            cum, nobis aspernatur temporibus, voluptates at obcaecati dolore est
-            repudiandae, veniam laborum fuga corrupti illum ut. Ad a tempore
-            sint adipisci vero, delectus ducimus debitis molestias!
+            {{ mvInfo.desc }}
           </p>
         </div>
       </div>
       <!-- 精彩评论 -->
       <div class="comment-wrap">
-        <p class="title">精彩评论<span class="number">(666)</span></p>
+        <p class="title">精彩评论<span class="number">({{ mvCommentInfo.hotComments.length }})</span></p>
         <div class="comments-wrap">
-          <div class="item">
+          <div class="item" v-for="(item, index) in mvCommentInfo.hotComments" :key="index">
             <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt="" />
+              <img :src="item.user.avatarUrl" alt="" />
             </div>
             <div class="content-wrap">
               <div class="content">
-                <span class="name">爱斯基摩：</span>
-                <span class="comment">谁说的，长大了依旧可爱哈</span>
+                <span class="name">{{ item.user.nickname }}：</span>
+                <span class="comment">{{ item.content }}</span>
               </div>
-              <div class="re-content">
-                <span class="name">小苹果：</span>
-                <span class="comment">还是小时候比较可爱</span>
+              <div class="re-content" v-if="item.beReplied[0]">
+                <span class="name">{{ item.beReplied[0].user.nickname }}：</span>
+                <span class="comment">{{ item.beReplied[0].content }}</span>
               </div>
-              <div class="date">2020-02-12 17:26:11</div>
+              <div class="date">{{ item.time | LocaleString }}</div>
             </div>
           </div>
         </div>
       </div>
       <!-- 最新评论 -->
       <div class="comment-wrap">
-        <p class="title">最新评论<span class="number">(666)</span></p>
+        <p class="title">最新评论<span class="number">({{ mvCommentInfo.total }})</span></p>
         <div class="comments-wrap">
-          <div class="item">
+          <div class="item" v-for="(item, index) in mvCommentInfo.comments" :key="index">
             <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt="" />
+              <img :src="item.user.avatarUrl" alt="" />
             </div>
             <div class="content-wrap">
               <div class="content">
-                <span class="name">爱斯基摩：</span>
-                <span class="comment">谁说的，长大了依旧可爱哈</span>
+                <span class="name">{{ item.user.nickname }}：</span>
+                <span class="comment">{{ item.content }}</span>
               </div>
-              <div class="re-content">
-                <span class="name">小苹果：</span>
-                <span class="comment">还是小时候比较可爱</span>
+              <div class="re-content" v-if="item.beReplied[0]">
+                <span class="name">{{ item.beReplied[0].user.nickname }}：</span>
+                <span class="comment">{{ item.beReplied[0].content }}</span>
               </div>
-              <div class="date">2020-02-12 17:26:11</div>
+              <div class="date">{{ item.time | LocaleString }}</div>
             </div>
           </div>
-          <div class="item">
-            <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt="" />
-            </div>
-            <div class="content-wrap">
-              <div class="content">
-                <span class="name">爱斯基摩：</span>
-                <span class="comment">谁说的，长大了依旧可爱哈</span>
-              </div>
-              <div class="re-content">
-                <span class="name">小苹果：</span>
-                <span class="comment">还是小时候比较可爱</span>
-              </div>
-              <div class="date">2020-02-12 17:26:11</div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt="" />
-            </div>
-            <div class="content-wrap">
-              <div class="content">
-                <span class="name">爱斯基摩：</span>
-                <span class="comment">谁说的，长大了依旧可爱哈</span>
-              </div>
-              <div class="re-content">
-                <span class="name">小苹果：</span>
-                <span class="comment">还是小时候比较可爱</span>
-              </div>
-              <div class="date">2020-02-12 17:26:11</div>
-            </div>
-          </div>
+
         </div>
       </div>
       <!-- 分页器 -->
@@ -120,7 +80,7 @@
         layout="prev, pager, next"
         :total="total"
         :current-page="page"
-        :page-size="5"
+        :page-size="10"
         :limit="limit"
       >
       </el-pagination>
@@ -129,19 +89,19 @@
       <h3 class="title">相关推荐</h3>
       <div class="mvs">
         <div class="items">
-          <div class="item">
+          <div v-for="(item, index) in simiMvs" :key="index" class="item">
             <div class="img-wrap">
-              <img src="../assets/mvCover.jpg" alt="" />
+              <img :src="item.cover" alt="" />
               <span class="iconfont icon-play"></span>
               <div class="num-wrap">
                 <div class="iconfont icon-play"></div>
-                <div class="num">9912</div>
+                <div class="num">{{ item.playCount }}</div>
               </div>
-              <span class="time">02:43</span>
+              <span class="time">{{ item.duration }}</span>
             </div>
             <div class="info-wrap">
-              <div class="name">HEYNA</div>
-              <div class="singer">余恩</div>
+              <div class="name">{{ item.name }}</div>
+              <div class="singer">{{ item.artistName }}</div>
             </div>
           </div>
         </div>
@@ -151,8 +111,10 @@
 </template>
 
 <script>
+// 导入 axios
+import axios from "axios";
 export default {
-  name: 'mv',
+  name: "mv",
   data() {
     return {
       // 总条数
@@ -160,12 +122,106 @@ export default {
       // 页码
       page: 1,
       // 页容量
-      limit: 10
+      limit: 10,
+      // mv地址
+      url: "",
+      // 相关mv
+      simiMvs: [],
+      // mv的信息
+      mvInfo: {},
+      // 头像
+      icon:'',
+      mvCommentInfo:{}
     };
+  },
+  created() {
+    // 获取mv播放地址
+    axios({
+      url: "https://autumnfish.cn/mv/url",
+      method: "get",
+      params: {
+        // 获取url中的 id
+
+        id: this.$route.query.q
+      }
+    }).then(res => {
+      // console.log(res)
+      this.url = res.data.data.url;
+    });
+    // 获取 相关的mv
+    axios({
+      url: "https://autumnfish.cn/simi/mv",
+      method: "get",
+      params: {
+        mvid: this.$route.query.q
+      }
+    }).then(res => {
+      // console.log(res)
+      // 保存相关MV
+      this.simiMvs = res.data.mvs;
+    });
+
+    // 获取 mv的信息
+    axios({
+      url: "https://autumnfish.cn/mv/detail",
+      method: "get",
+      params: {
+        mvid: this.$route.query.q
+      }
+    }).then(res => {
+      // console.log(res)
+      // mv的信息
+      this.mvInfo = res.data.data;
+      // 获取 歌手信息
+      axios({
+        url: "https://autumnfish.cn/artists",
+        method: "get",
+        params: {
+          id: this.mvInfo.artists[0].id
+        }
+      }).then(res => {
+        // console.log(res);
+        // 歌手的封面信息
+        this.icon = res.data.artist.picUrl
+      });
+    });
+    
+    // 获取评论数据
+    axios({
+      url:"https://autumnfish.cn/comment/mv",
+      method:'get',
+      params:{
+        id:this.$route.query.q,
+        limit:10,
+        offset:0
+      }
+    }).then(res=>{
+      console.log(res)
+      this.mvCommentInfo.total = res.data.total
+        this.mvCommentInfo.comments = res.data.comments
+        this.mvCommentInfo.hotComments = res.data.hotComments
+        this.total = res.data.total
+    })
   },
   methods: {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
+      this.page = val
+      axios({
+      url:"https://autumnfish.cn/comment/mv",
+      method:'get',
+      params:{
+        id:this.$route.query.q,
+        limit:10,
+        offset:this.page,
+      }
+    }).then(res=>{
+      // console.log(res)
+
+      this.mvCommentInfo.total = res.data.total
+        this.mvCommentInfo.comments = res.data.comments
+        this.mvCommentInfo.hotComments = res.data.hotComments
+    })
     }
   }
 };

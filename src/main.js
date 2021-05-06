@@ -25,53 +25,53 @@ import playlist from './views/06.playlist.vue'
 import mv from './views/07.mv.vue'
 
 let router = new VueRouter({
-  routes: [
-    {
-      path: '/',
-      redirect: '/discovery'
-    },
-    {
-      // 发现音乐
-      path: '/discovery',
-      component: discovery
-    },
-    {
-      // 推荐歌单
-      path: '/playlists',
-      component: playlists
-    },
-    {
-      // 推荐歌单
-      path: '/playlist',
-      component: playlist
-    },
-    {
-      // 最新音乐
-      path: '/songs',
-      component: songs
-    },
-    {
-      // 最新音乐
-      path: '/mvs',
-      component: mvs
-    },
-    // mv详情
-    {
-      path: '/mv',
-      component: mv
-    },
-    // 搜索结果页
-    {
-      path: '/result',
-      component: result
-    }
-  ]
+    routes: [
+        {
+            path: '/',
+            redirect: '/discovery',
+        },
+        {
+            // 发现音乐
+            path: '/discovery',
+            component: discovery,
+        },
+        {
+            // 推荐歌单
+            path: '/playlists',
+            component: playlists,
+        },
+        {
+            // 推荐歌单
+            path: '/playlist',
+            component: playlist,
+        },
+        {
+            // 最新音乐
+            path: '/songs',
+            component: songs,
+        },
+        {
+            // 最新音乐
+            path: '/mvs',
+            component: mvs,
+        },
+        // mv详情
+        {
+            path: '/mv',
+            component: mv,
+        },
+        // 搜索结果页
+        {
+            path: '/result',
+            component: result,
+        },
+    ],
 })
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-  // 挂载到Vue示例上
-  router
+    render: h => h(App),
+    // 挂载到Vue示例上
+    router,
 }).$mount('#app')
