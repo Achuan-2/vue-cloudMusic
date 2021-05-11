@@ -1,5 +1,6 @@
 # player
 
+link: https://achuan-2.top/vue-cloudMusic/#/discovery
 ## Project setup
 ```
 npm install
